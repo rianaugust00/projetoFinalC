@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1724194251 source:d:\projetosc\quizgame\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+
+1724271566 source:d:\projetosc\quizgame\funcoes.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	<time.h>
+

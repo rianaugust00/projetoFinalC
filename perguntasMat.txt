@@ -1,0 +1,69 @@
+Qual e o resultado da soma 7 + 8?
+12
+13
+15
+16
+Resposta Correta: 4
+
+Quanto e 9 multiplicado por 6?
+42
+54
+56
+60
+Resposta Correta: 2
+
+Qual e o valor de x na equacao 2x + 3 = 11?
+x = 3
+x = 4
+x = 5
+x = 6
+Resposta Correta: 2
+
+Quanto e 100 dividido por 4?
+20
+25
+30
+35
+Resposta Correta: 2
+
+Se um triangulo tem angulos de 90, 45 e 45, que tipo de triangulo e?
+Equilatero
+Isosceles
+Retangulo
+Escaleno
+Resposta Correta: 2
+
+Qual e a area de um quadrado que tem lados de 5 cm?
+10 cm
+15 cm
+20 cm
+25 cm
+Resposta Correta: 4
+
+Se Joao tem 5 macas e da 2 para Maria, quantas macas ele tem agora?
+2
+3
+4
+5
+Resposta Correta: 2
+
+Qual e o perimetro de um retangulo com lados de 4 cm e 7 cm?
+10 cm
+18 cm
+22 cm
+24 cm
+Resposta Correta: 3
+
+Qual e a raiz quadrada de 64?
+6
+7
+8
+9
+Resposta Correta: 3
+
+Se um circulo tem um raio de 3 cm, qual e a sua circunferencia? (Use pi =~ 3,14)
+9,42 cm
+12,56 cm
+18,84 cm
+28,26 cm
+Resposta Correta: 3
