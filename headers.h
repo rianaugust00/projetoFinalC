@@ -21,5 +21,12 @@ void matematica();
 
 void mix();
 
-void verificacao(FILE* file);
+void verificacao();
+
+void salvarPontuacao();
+
+void fimDeJogo();
+
+void records();
+
 

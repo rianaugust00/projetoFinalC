@@ -31,7 +31,7 @@ int main()
         iniciarQuiz();
         break;
     case 2:
-        //records();
+        records();
         break;
     case 3:
         //admin();

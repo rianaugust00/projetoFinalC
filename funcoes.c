@@ -5,7 +5,7 @@
 
 #define MAX_LINE_LENGTH 150
 
-//Funçao para iniciar
+//Funcao para iniciar
 void iniciarQuiz()
 {
 
@@ -59,7 +59,7 @@ void iniciarQuiz()
 
 
 }
-//Função para limpar a tela do console
+//Funcao para limpar a tela do console
 void clearConsole()
 {
 #ifdef _WIN32
@@ -75,7 +75,7 @@ void geografia()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
+        printf("Arquivo nao encontrado\n");
         getchar(); // Deixa a mensagem na tela
         exit(0); // Fecha o programa
     }
@@ -88,9 +88,9 @@ void historia()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
-        getchar(); // Deixa a mensagem na tela
-        exit(0); // Fecha o programa
+        printf("Arquivo nao encontrado\n");
+        getchar();
+        exit(0);
     }
     verificacao(file);
 
@@ -102,7 +102,7 @@ void ciencia()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
+        printf("Arquivo nao encontrado\n");
         getchar(); // Deixa a mensagem na tela
         exit(0); // Fecha o programa
     }
@@ -116,9 +116,9 @@ void cultura()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
-        getchar(); // Deixa a mensagem na tela
-        exit(0); // Fecha o programa
+        printf("Arquivo nao encontrado\n");
+        getchar();
+        exit(0);
     }
     verificacao(file);
 
@@ -130,9 +130,9 @@ void matematica()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
-        getchar(); // Deixa a mensagem na tela
-        exit(0); // Fecha o programa
+        printf("Arquivo nao encontrado\n");
+        getchar();
+        exit(0);
     }
     verificacao(file);
 }
@@ -143,9 +143,9 @@ void mix()
 
     if (file == NULL)
     {
-        printf("Arquivo não encontrado\n");
-        getchar(); // Deixa a mensagem na tela
-        exit(0); // Fecha o programa
+        printf("Arquivo nao encontrado\n");
+        getchar();
+        exit(0);
     }
     verificacao(file);
 }
@@ -158,7 +158,8 @@ typedef struct
     char nome[MAX_NAME_LENGTH];
     int pontuacao;
 } Jogador;
-//funçao verifiar perguntas e respostas
+
+//funï¿½ao verifiar perguntas e respostas
 void verificacao(FILE* file)
 {
 
@@ -174,7 +175,7 @@ void verificacao(FILE* file)
     {
         printf("Pergunta %d: %s\n", pergunta_num, perguntas);
 
-        // Lê as 4 alternativas
+        // Lï¿½ as 4 alternativas
         for (int i = 0; i < 4; i++)
         {
             if (fgets(alternativas[i], MAX_LINE_LENGTH, file) != NULL)
@@ -183,18 +184,18 @@ void verificacao(FILE* file)
             }
         }
 
-        // Lê a resposta correta do arquivo exemplo: Resposta Correta: 2
+        // Lï¿½ a resposta correta do arquivo exemplo: Resposta Correta: 2
         fscanf(file, "Resposta Correta: %d\n", &respostaCorreta);
 
         // Pausa para leitura da pergunta
         printf("Voce tem 10 segundos para ler a pergunta.\n");
         Sleep(1000);
 
-        // Recebe a resposta do usuário
+        // Recebe a resposta do usuï¿½rio
         printf("Digite sua resposta (1-4): ");
         scanf("%d", &userChoice);
 
-        // Verifica se a resposta está correta
+        // Verifica se a resposta estï¿½ correta
         if (userChoice == respostaCorreta)
         {
             printf("Resposta correta!\n");
@@ -209,9 +210,9 @@ void verificacao(FILE* file)
         pergunta_num++;
         printf("-------------------------------------------------\n");
     }
-    fimDeJogo();
+    fimDeJogo(pontuacao);
 
-    fclose(file);  // Fecha o arquivo após todas as perguntas terem sido processadas
+    fclose(file);  // Fecha o arquivo apï¿½s todas as perguntas terem sido processadas
 }
 //funcao para salvar dados do jogador
 void salvarPontuacao(Jogador *jogador)
@@ -219,7 +220,7 @@ void salvarPontuacao(Jogador *jogador)
     FILE *file = fopen("jogadores.txt", "r+");
     if (file == NULL)
     {
-        file = fopen("jogadores.txt", "w");  // Cria o arquivo se ele não existir
+        file = fopen("jogadores.txt", "w");  // Cria o arquivo se ele nÃ£o existir
     }
 
     char nomeArquivo[MAX_NAME_LENGTH];
@@ -227,12 +228,12 @@ void salvarPontuacao(Jogador *jogador)
     int encontrado = 0;
     long posicao;
 
-    // Procura se o jogador já existe no arquivo
+    // Procura se o jogador jÃ¡ existe no arquivo
     while (fscanf(file, "%s %d", nomeArquivo, &pontuacaoArquivo) != EOF)
     {
         if (strcmp(jogador->nome, nomeArquivo) == 0)
         {
-            // Atualiza a pontuação do jogador
+            // Atualiza a pontuaÃ§Ã£o do jogador
             posicao = ftell(file) - sizeof(pontuacaoArquivo);
             fseek(file, posicao, SEEK_SET);
             fprintf(file, "%d\n", jogador->pontuacao);
@@ -240,16 +241,17 @@ void salvarPontuacao(Jogador *jogador)
             break;
         }
     }
-    fclose(file);
-    // Se o jogador não for encontrado, adiciona no final do arquivo
     if (!encontrado)
     {
+        // Move o ponteiro para o fim do arquivo para adicionar novo jogador
+        fseek(file, 0, SEEK_END);
         fprintf(file, "%s %d\n", jogador->nome, jogador->pontuacao);
     }
 
+    fclose(file);
 }
 
-// Função principal que termina o jogo e salva a pontuação
+// FunÃ§Ã£o principal que termina o jogo e salva a pontuaÃ§Ã£o
 void fimDeJogo(int pontuacao)
 {
     char nomeUser[MAX_NAME_LENGTH];
@@ -263,24 +265,38 @@ void fimDeJogo(int pontuacao)
     strcpy(jogador.nome, nomeUser);
     jogador.pontuacao = pontuacao;
 
-    // Salva a pontuação do jogador no arquivo
+    // Salva a pontuaÃ§Ã£o do jogador no arquivo
     salvarPontuacao(&jogador);
 }
 
 //Records
 void records()
 {
+    FILE* file = fopen("jogadores.txt", "r");
+    if (file == NULL)
+    {
+        printf("Nenhum recorde encontrado.\n");
+        return;
+    }
+
     printf("|----------------------|\n");
     printf("|       QUIZ GAME      |\n");
     printf("|                      |\n");
     printf("|        RECORDS       |\n");
     printf("|                      |\n");
     printf("| NOME       PONTOS    |\n");
-    printf("|                      |\n");
-    printf("|                      |\n");
-    printf("|                      |\n");
-    printf("|                      |\n");
-    printf("|                      |\n");
-    printf("|                      |\n");
     printf("|----------------------|\n");
+
+    Jogador jogador;
+    while (fscanf(file, "%s %d", jogador.nome, &jogador.pontuacao) != EOF)
+    {
+        printf("| %-10s  %-8d |\n", jogador.nome, jogador.pontuacao);
+    }
+
+    printf("|----------------------|\n");
+    fclose(file);
+
+    printf("Pressione qualquer tecla para voltar ao menu.\n");
+    getchar(); // Aguarda o usuÃ¡rio pressionar uma tecla
+    getchar();
 }
