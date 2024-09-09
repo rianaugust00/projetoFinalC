@@ -3,7 +3,7 @@ Qual e o resultado da soma 7 + 8?
 13
 15
 16
-Resposta Correta: 4
+Resposta Correta: 3
 
 Quanto e 9 multiplicado por 6?
 42

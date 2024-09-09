@@ -21,7 +21,9 @@ void iniciarQuiz()
     printf("| 4 CULTURA           |\n");
     printf("| 5 MATEMATICA        |\n");
     printf("| 6 MIX(TODOS)        |\n");
+    printf("| 7 ADMIN TEMA        |\n");
     printf("| 0 PARA VOLTAR       |\n");
+    printf("|                     |\n");
     printf("|---------------------|\n");
     scanf("%d", &escolha);
 
@@ -55,6 +57,9 @@ void iniciarQuiz()
         clearConsole();
         mix();
         break;
+    case 7:
+        clearConsole();
+        admTema();
     }
 
 
@@ -149,6 +154,19 @@ void mix()
     }
     verificacao(file);
 }
+//Quiz Admin
+void admTema()
+{
+   FILE* file = fopen("perguntasAdmin.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Arquivo nao encontrado\n");
+        getchar();
+        exit(0);
+    }
+    verificacao(file);
+}
 //struct de jogador
 typedef struct
 {
@@ -158,7 +176,6 @@ typedef struct
     char nome[MAX_NAME_LENGTH];
     int pontuacao;
 } Jogador;
-
 //fun�ao verifiar perguntas e respostas
 void verificacao(FILE* file)
 {
@@ -234,7 +251,7 @@ void salvarPontuacao(Jogador *jogador)
         if (strcmp(jogador->nome, nomeArquivo) == 0)
         {
             // Atualiza a pontuação do jogador
-            posicao = ftell(file) - sizeof(pontuacaoArquivo);
+            posicao = ftell(file) - (pontuacaoArquivo);
             fseek(file, posicao, SEEK_SET);
             fprintf(file, "%d\n", jogador->pontuacao);
             encontrado = 1;
@@ -243,17 +260,17 @@ void salvarPontuacao(Jogador *jogador)
     }
     if (!encontrado)
     {
-        // Move o ponteiro para o fim do arquivo para adicionar novo jogador
+        // move o ponteiro para o fim do arquivo para adicionar novo jogador
         fseek(file, 0, SEEK_END);
         fprintf(file, "%s %d\n", jogador->nome, jogador->pontuacao);
     }
 
     fclose(file);
 }
-
-// Função principal que termina o jogo e salva a pontuação
+//função principal que termina o jogo e salva a pontuação
 void fimDeJogo(int pontuacao)
 {
+
     char nomeUser[MAX_NAME_LENGTH];
     Jogador jogador;
     printf("FIM DE JOGO!\n");
@@ -261,17 +278,20 @@ void fimDeJogo(int pontuacao)
     printf("Digite seu nome: ");
     scanf("%s", nomeUser);
 
-    // Prepara os dados do jogador
+    // prepara os dados do jogador
     strcpy(jogador.nome, nomeUser);
     jogador.pontuacao = pontuacao;
 
-    // Salva a pontuação do jogador no arquivo
+    // salva a pontuação do jogador no arquivo
     salvarPontuacao(&jogador);
-}
 
+    // retorna para a home
+    iniciarQuiz();
+}
 //Records
 void records()
 {
+
     FILE* file = fopen("jogadores.txt", "r");
     if (file == NULL)
     {
@@ -297,6 +317,75 @@ void records()
     fclose(file);
 
     printf("Pressione qualquer tecla para voltar ao menu.\n");
-    getchar(); // Aguarda o usuário pressionar uma tecla
+    getchar(); // aguarda o usuário pressionar uma tecla
     getchar();
+}
+//Admin
+void admin()
+{
+    FILE *file;
+    int perguntas, i;
+
+    //abre o arquivo em modo de escrita
+    file = fopen("perguntasAdmin.txt", "a");
+    if (file == NULL)
+    {
+        file = fopen("perguntasAdmin.txt", "w");  // Cria o arquivo se ele não existir
+    }
+
+    printf("Para comecarmos, digite quantas perguntas deseja fazer: \n");
+    scanf("%d", &perguntas);
+
+    // loop para adicionar as perguntas
+    for (i = 0; i < perguntas; i++)
+    {
+        char pergunta[256];
+        char alternativa1[256], alternativa2[256], alternativa3[256], alternativa4[256];
+        int respostaCorreta;
+
+        // Coletando a pergunta e alternativas
+        printf("Digite a pergunta %d: \n", i + 1);
+        getchar(); // Limpar o buffer do enter
+        fgets(pergunta, 256, stdin);
+
+        printf("Digite a alternativa 1: \n");
+        fgets(alternativa1, 256, stdin);
+
+        printf("Digite a alternativa 2: \n");
+        fgets(alternativa2, 256, stdin);
+
+        printf("Digite a alternativa 3: \n");
+        fgets(alternativa3, 256, stdin);
+
+        printf("Digite a alternativa 4: \n");
+        fgets(alternativa4, 256, stdin);
+
+        // coletando a resposta correta
+        printf("Digite o numero da resposta correta (1-4): \n");
+        scanf("%d", &respostaCorreta);
+
+        if(respostaCorreta > 4 || respostaCorreta < 0)
+        {
+            printf("O numero da resposta correta deve estar entre (1-4) tente novamente!");
+
+        }
+        else
+        {
+            // salva o arquivo
+            fprintf(file, "%s",pergunta);
+            fprintf(file, "%s",alternativa1);
+            fprintf(file, "%s",alternativa2);
+            fprintf(file, "%s",alternativa3);
+            fprintf(file, "%s",alternativa4);
+            fprintf(file, "Resposta Correta: %d\n",respostaCorreta);
+        }
+
+    }
+    // fecha o arquivo depois de salvar
+    fclose(file);
+    printf("Perguntas salvas com sucesso!\n");
+    printf("Voltando ao menu principal!\n");
+    Sleep(5000);
+    main();
+
 }

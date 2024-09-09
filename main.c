@@ -17,13 +17,14 @@ int main()
         printf("|   2 PARA RECORDS   |\n");
         printf("|   3 PARA ADMIN     |\n");
         printf("|   0 PARA SAIR      |\n");
+        printf("|                    |\n");
         printf("|--------------------|\n");
         scanf("%d", &opc);
 
         switch(opc){
 
     case 0:
-        printf("Até logo!\n");
+        printf("Ate logo!\n");
         exit(0);
         break;
     case 1:
@@ -31,10 +32,11 @@ int main()
         iniciarQuiz();
         break;
     case 2:
+        clearConsole();
         records();
         break;
     case 3:
-        //admin();
+        admin();
         break;
         }
 

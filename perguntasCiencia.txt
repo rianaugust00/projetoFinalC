@@ -34,50 +34,50 @@ Nada acontece
 Resposta Correta: 2
 
 Como os peixes respiram debaixo d\'agua?
-Usando branquias que extraem oxigenio da agua.
-Absorvendo oxigenio pela pele.
-Usando pulmoes especiais.
-Ingerindo agua para obter oxigenio.
-Resposta Correta: 1.
+Usando branquias que extraem oxigenio da agua
+Absorvendo oxigenio pela pele
+Usando pulmoes especiais
+Ingerindo agua para obter oxigenio
+Resposta Correta: 1
 
 O que sao continentes?
-Pequenas ilhas espalhadas pelo oceano.
-Grandes massas de terra na superficie da Terra.
-Regioes habitadas por diferentes especies.
-Areas cobertas por florestas densas.
-Resposta Correta: 2.
+Pequenas ilhas espalhadas pelo oceano
+Grandes massas de terra na superficie da Terra
+Regioes habitadas por diferentes especies
+Areas cobertas por florestas densas
+Resposta Correta: 2
 
 Qual e a funcao do coracao no corpo humano?
-Bombear sangue por todo o corpo.
-Filtrar toxinas do sangue.
-Produzir celulas sanguineas.
-Regular a temperatura corporal.
-Resposta Correta: 1.
+Bombear sangue por todo o corpo
+Filtrar toxinas do sangue
+Produzir celulas sanguineas
+Regular a temperatura corporal
+Resposta Correta: 1
 
 O que causa as estacoes do ano?
-A rotacao da Terra em torno de seu eixo.
-A orbita da Terra em torno do sol.
-A inclinacao do eixo da Terra em relacao ao sol.
-A distancia da Terra ao sol.
-Resposta Correta: 3.
+A rotacao da Terra em torno de seu eixo
+A orbita da Terra em torno do sol
+A inclinacao do eixo da Terra em relacao ao sol
+A distancia da Terra ao sol
+Resposta Correta: 3
 
 Como os vulcoes entram em erupcao?
-Quando a lava se acumula na superficie.
-Quando o magma sobe a superficie e libera lava e gases.
-Quando a pressao da Terra empurra a lava para cima.
-Quando um terremoto agita a crosta terrestre.
-Resposta Correta: 2.
+Quando a lava se acumula na superficie
+Quando o magma sobe a superficie e libera lava e gases
+Quando a pressao da Terra empurra a lava para cima
+Quando um terremoto agita a crosta terrestre
+Resposta Correta: 2
 
 Por que a Lua tem fases diferentes?
-Porque a Lua muda de forma.
-Por causa de sua posicao em relacao a Terra e ao sol.
-Porque a Terra bloqueia a luz do sol.
-Porque o sol orbita a Lua.
-Resposta Correta: 2.
+Porque a Lua muda de forma
+Por causa de sua posicao em relacao a Terra e ao sol
+Porque a Terra bloqueia a luz do sol
+Porque o sol orbita a Lua
+Resposta Correta: 2
 
 O que e eletricidade?
-A energia armazenada em baterias.
-A energia gerada pelo movimento de eletrons em um condutor.
-A energia que move veiculos eletricos.
-A energia usada para iluminar lampadas.
-Resposta Correta: 2.
+A energia armazenada em baterias
+A energia gerada pelo movimento de eletrons em um condutor
+A energia que move veiculos eletricos
+A energia usada para iluminar lampadas
+Resposta Correta: 2
