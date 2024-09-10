@@ -7,7 +7,8 @@ int main()
     int opc;
     setlocale(LC_ALL, "pt_BR.UTF-8");
 
-
+    while (1)
+    {
         printf("|--------------------|\n");
         printf("|*****QUIZ GAME******|\n");
         printf("|                    |\n");
@@ -21,26 +22,26 @@ int main()
         printf("|--------------------|\n");
         scanf("%d", &opc);
 
-        switch(opc){
-
-    case 0:
-        printf("Ate logo!\n");
-        exit(0);
-        break;
-    case 1:
-        clearConsole();
-        iniciarQuiz();
-        break;
-    case 2:
-        clearConsole();
-        records();
-        break;
-    case 3:
-        admin();
-        break;
+        switch(opc)
+        {
+        case 0:
+            printf("Até logo!\n");
+            return 0;
+        case 1:
+            clearConsole();
+            iniciarQuiz();
+            break;
+        case 2:
+            clearConsole();
+            records();
+            break;
+        case 3:
+            admin();
+            break;
+        default:
+            printf("Opção inválida. Tente novamente.\n");
+            break;
         }
-
-    clearConsole();
-
+    }
     return 0;
 }

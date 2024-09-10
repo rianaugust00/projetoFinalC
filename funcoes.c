@@ -8,7 +8,7 @@
 //Funcao para iniciar
 void iniciarQuiz()
 {
-
+    clearConsole();
     int escolha;
 
     printf("|---------------------|\n");
@@ -31,7 +31,7 @@ void iniciarQuiz()
     {
 
     case 0:
-        main();
+        return;
         break;
     case 1:
         clearConsole();
@@ -157,7 +157,7 @@ void mix()
 //Quiz Admin
 void admTema()
 {
-   FILE* file = fopen("perguntasAdmin.txt", "r");
+    FILE* file = fopen("perguntasAdmin.txt", "r");
 
     if (file == NULL)
     {
@@ -176,7 +176,7 @@ typedef struct
     char nome[MAX_NAME_LENGTH];
     int pontuacao;
 } Jogador;
-//fun�ao verifiar perguntas e respostas
+//funcao verifiar perguntas e respostas
 void verificacao(FILE* file)
 {
 
@@ -278,14 +278,14 @@ void fimDeJogo(int pontuacao)
     printf("Digite seu nome: ");
     scanf("%s", nomeUser);
 
-    // prepara os dados do jogador
+    //prepara os dados do jogador
     strcpy(jogador.nome, nomeUser);
     jogador.pontuacao = pontuacao;
 
-    // salva a pontuação do jogador no arquivo
+    //salva a pontuação do jogador no arquivo
     salvarPontuacao(&jogador);
 
-    // retorna para a home
+    //retorna para a home
     iniciarQuiz();
 }
 //Records
@@ -330,22 +330,31 @@ void admin()
     file = fopen("perguntasAdmin.txt", "a");
     if (file == NULL)
     {
-        file = fopen("perguntasAdmin.txt", "w");  // Cria o arquivo se ele não existir
+        file = fopen("perguntasAdmin.txt", "w");
     }
 
-    printf("Para comecarmos, digite quantas perguntas deseja fazer: \n");
+    printf("Para começarmos, digite quantas perguntas deseja fazer: \n");
     scanf("%d", &perguntas);
 
-    // loop para adicionar as perguntas
+    //perguntas
     for (i = 0; i < perguntas; i++)
     {
-        char pergunta[256];
-        char alternativa1[256], alternativa2[256], alternativa3[256], alternativa4[256];
+        char *pergunta = (char *)malloc(256 * sizeof(char));
+        char *alternativa1 = (char *)malloc(256 * sizeof(char));
+        char *alternativa2 = (char *)malloc(256 * sizeof(char));
+        char *alternativa3 = (char *)malloc(256 * sizeof(char));
+        char *alternativa4 = (char *)malloc(256 * sizeof(char));
         int respostaCorreta;
+
+        if (pergunta == NULL || alternativa1 == NULL || alternativa2 == NULL || alternativa3 == NULL || alternativa4 == NULL)
+        {
+            printf("Erro ao alocar memória\n");
+            exit(1);
+        }
 
         // Coletando a pergunta e alternativas
         printf("Digite a pergunta %d: \n", i + 1);
-        getchar(); // Limpar o buffer do enter
+        getchar();
         fgets(pergunta, 256, stdin);
 
         printf("Digite a alternativa 1: \n");
@@ -360,32 +369,36 @@ void admin()
         printf("Digite a alternativa 4: \n");
         fgets(alternativa4, 256, stdin);
 
-        // coletando a resposta correta
-        printf("Digite o numero da resposta correta (1-4): \n");
+        printf("Digite o número da resposta correta (1-4): \n");
         scanf("%d", &respostaCorreta);
 
-        if(respostaCorreta > 4 || respostaCorreta < 0)
+        if (respostaCorreta > 4 || respostaCorreta < 1)
         {
-            printf("O numero da resposta correta deve estar entre (1-4) tente novamente!");
-
+            printf("O número da resposta correta deve estar entre 1 e 4. Tente novamente!\n");
+            i--;
         }
         else
         {
-            // salva o arquivo
-            fprintf(file, "%s",pergunta);
-            fprintf(file, "%s",alternativa1);
-            fprintf(file, "%s",alternativa2);
-            fprintf(file, "%s",alternativa3);
-            fprintf(file, "%s",alternativa4);
-            fprintf(file, "Resposta Correta: %d\n",respostaCorreta);
+            //salva o arquivo
+            fprintf(file, "%s", pergunta);
+            fprintf(file, "%s", alternativa1);
+            fprintf(file, "%s", alternativa2);
+            fprintf(file, "%s", alternativa3);
+            fprintf(file, "%s", alternativa4);
+            fprintf(file, "Resposta Correta: %d\n", respostaCorreta);
         }
 
+        //liberar memória
+        free(pergunta);
+        free(alternativa1);
+        free(alternativa2);
+        free(alternativa3);
+        free(alternativa4);
     }
-    // fecha o arquivo depois de salvar
+
     fclose(file);
     printf("Perguntas salvas com sucesso!\n");
     printf("Voltando ao menu principal!\n");
-    Sleep(5000);
-    main();
-
+    sleep(3);
+    return;
 }
